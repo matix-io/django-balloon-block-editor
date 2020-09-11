@@ -6,11 +6,11 @@ with open('VERSION.txt') as f:
 
 
 setup(
-    name='my_module',
+    name='balloon_block_editor',
     version=version,
-    url='https://my_url',
+    url='https://github.com/matix-io/django-balloon-block-editor',
     license='MIT',
-    description='Project description',
+    description='Implementation of CKEditor\'s Balloon Block Editor, for Django.',
     long_description='',
     author='Connor Bode',
     author_email='connor@matix.io',

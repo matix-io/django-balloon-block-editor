@@ -1,0 +1,11 @@
+MANIFEST.in
+README.md
+VERSION.txt
+requirements.txt
+setup.py
+balloon_block_editor/__init__.py
+balloon_block_editor.egg-info/PKG-INFO
+balloon_block_editor.egg-info/SOURCES.txt
+balloon_block_editor.egg-info/dependency_links.txt
+balloon_block_editor.egg-info/not-zip-safe
+balloon_block_editor.egg-info/top_level.txt
