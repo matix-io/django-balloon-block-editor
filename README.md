@@ -1,16 +1,16 @@
-# django-balloon-block-field
+# django-balloon-block-editor
 
 ## Installation
 
-- `pip install django-balloon-block-field`
-- In `settings.py`, add `balloon_block_field` to `INSTALLED_APPS`
+- `pip install django-balloon-block-editor`
+- In `settings.py`, add `balloon_block_editor` to `INSTALLED_APPS`
 
 ## Usage
 
 In `models.py`:
 
 ```
-from balloon_block_field.fields import BalloonBlockField
+from balloon_block_editor.fields import BalloonBlockField
 from django.db import models
 
 
