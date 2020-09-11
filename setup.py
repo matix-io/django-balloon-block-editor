@@ -6,7 +6,7 @@ with open('VERSION.txt') as f:
 
 
 setup(
-    name='balloon_block_editor',
+    name='django_balloon_block_editor',
     version=version,
     url='https://github.com/matix-io/django-balloon-block-editor',
     license='MIT',
