@@ -15,7 +15,6 @@ setup(
     author='Connor Bode',
     author_email='connor@matix.io',
     packages=find_packages(),
-	include_package_data=True,
     install_requires=[],
     zip_safe=False,
     classifiers=[],

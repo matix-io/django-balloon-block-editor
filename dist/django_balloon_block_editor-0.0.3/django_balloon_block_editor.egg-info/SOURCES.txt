@@ -5,8 +5,6 @@ requirements.txt
 setup.py
 balloon_block_editor/__init__.py
 balloon_block_editor/fields.py
-balloon_block_editor/static/balloon_block_editor/ckeditor.js
-balloon_block_editor/templates/balloon_block_editor/widget.html
 core/__init__.py
 core/admin.py
 core/asgi.py
