@@ -5,15 +5,6 @@
 <div class="balloon-block-editor" id="balloon-block-editor-{{ name }}">{% if value %}{{ value | safe }}{% endif %}</div>
 <script>
   var textarea = document.querySelector('#id_{{ name }}');
-	var UploadAdapter = function (loader) {
-		this.upload = function () {
-			console.log('uploading!');
-		};
-
-		this.abort = function () {
-			console.log('aborting');
-		};
-	};
 	BalloonEditor
 		.create( document.querySelector( '#balloon-block-editor-{{ name }}' ), {
 			blockToolbar: [
@@ -23,17 +14,16 @@
 				'|',
 				'blockQuote', 'imageUpload',
         '|',
-        'codeBlock',
+        'codeBlock', 'code',
 			],
+      simpleUpload: {
+        uploadUrl: '{% url "balloon-block-editor-image-upload" %}',
+      }
 		})
 		.then(function (editor) {
       editor.model.document.on('change', function () {
         textarea.value = editor.getData();
       });
-			editor.plugins.get('FileRepository').createUploadAdapter = function (loader) {
-				return new UploadAdapter(loader);
-			}
-			console.log(Array.from( editor.ui.componentFactory.names() ));
 		})
 		.catch( error => {
 				console.error( error );
