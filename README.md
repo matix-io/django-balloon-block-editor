@@ -18,4 +18,3 @@ class Test(models.Model):
     content = BalloonBlockField()
 ```
 
-

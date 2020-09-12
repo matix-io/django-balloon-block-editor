@@ -1,3 +1,0 @@
-include *.txt
-recursive-include balloon_block_editor/static
-recursive-include balloon_block_editor/templates

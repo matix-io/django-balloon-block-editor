@@ -1,3 +1,0 @@
-include *.txt
-include balloon_block_editor/static/balloon_block_editor/ckeditor.js
-include balloon_block_editor/templates/balloon_block_editor/widget.html
