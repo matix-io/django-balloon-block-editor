@@ -11,11 +11,11 @@
 In `models.py`:
 
 ```
-from balloon_block_editor.fields import BalloonBlockField
+from balloon_block_editor.fields import BalloonBlockEditorField
 from django.db import models
 
 
 class Test(models.Model):
-    content = BalloonBlockField()
+    content = BalloonBlockEditorField()
 ```
 
