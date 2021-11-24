@@ -18,7 +18,10 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
 
+from . import views
+
 urlpatterns = [
+	path('test/<int:pk>/', views.TestView.as_view()),
 	path('balloon-block-editor/', include('balloon_block_editor.urls')),
     path('admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

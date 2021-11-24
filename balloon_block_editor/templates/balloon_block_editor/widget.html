@@ -1,33 +1,58 @@
 {% load static %}
-<script src="{% static 'balloon_block_editor/ckeditor.js' %}"></script>
+<script>
+if (!window._djangoBalloonBlockEditorLoadedHooks) {
+  window._djangoBalloonBlockEditorLoadedHooks = [];
+}
+if (!window._hasLoadedDjangoBalloonBlockEditorScript) {
+  var script = document.createElement('script');
+  script.setAttribute('src', "{% static 'balloon_block_editor/ckeditor.js' %}");
+  document.body.appendChild(script);
+  window._hasLoadedDjangoBalloonBlockEditorScript = true;
+  script.addEventListener('load', function () {
+    for (var i = 0; i < window._djangoBalloonBlockEditorLoadedHooks.length; i += 1) {
+      window._djangoBalloonBlockEditorLoadedHooks[i]();
+    }
+  })
+}
+</script>
 
 <textarea id="id_{{ name }}" style="display:none" name="{{ name }}">{% if value %}{{ value | safe }}{% endif %}</textarea>
 <div class="balloon-block-editor" id="balloon-block-editor-{{ name }}">{% if value %}{{ value | safe }}{% endif %}</div>
 <script>
-  var textarea = document.querySelector('#id_{{ name }}');
-	BalloonEditor
-		.create( document.querySelector( '#balloon-block-editor-{{ name }}' ), {
-			blockToolbar: [
-				'paragraph', 'heading',
-				'|',
-				'bulletedList', 'numberedList',
-				'|',
-				'blockQuote', 'imageUpload',
-        '|',
-        'codeBlock', 'code',
-			],
-      simpleUpload: {
-        uploadUrl: '{% url "balloon-block-editor-image-upload" %}',
-      }
-		})
-		.then(function (editor) {
-      editor.model.document.on('change', function () {
-        textarea.value = editor.getData();
-      });
-		})
-		.catch( error => {
-				console.error( error );
-		} );
+(function () {
+  function init() {
+    var textarea = document.querySelector('#id_{{ name }}');
+    BalloonEditor
+      .create( document.querySelector( '#balloon-block-editor-{{ name }}' ), {
+        blockToolbar: [
+          'paragraph', 'heading',
+          '|',
+          'bulletedList', 'numberedList',
+          '|',
+          'blockQuote', 'imageUpload',
+          '|',
+          'codeBlock', 'code',
+        ],
+        simpleUpload: {
+          uploadUrl: '{% url "balloon-block-editor-image-upload" %}',
+        }
+      })
+      .then(function (editor) {
+        editor.model.document.on('change', function () {
+          textarea.value = editor.getData();
+        });
+      })
+      .catch( error => {
+          console.error( error );
+      } );
+  }
+  if (window._hasLoadedDjangoBalloonBlockEditor) {
+    init();
+  } else {
+    window._djangoBalloonBlockEditorLoadedHooks.push(init)
+  }
+})()
+
 </script>
 <style>
 form .balloon-block-editor {
